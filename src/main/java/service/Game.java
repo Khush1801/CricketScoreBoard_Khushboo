@@ -15,6 +15,7 @@ public class Game {
     public void HalfMatch(Team battingTeam, Team bowlingTeam){
         List<List<String>> overs = battingTeam.getBattingOverDetails();
         for(int i=0;i<overs.size();i++){
+            System.out.println("================================================");
             System.out.println(battingTeam.getName()+" is batting for over number " + (i+1));
             bowlingTeam.nextBowler(i);
             playOver(battingTeam, bowlingTeam, overs.get(i));
