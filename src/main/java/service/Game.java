@@ -13,8 +13,11 @@ public class Game {
     }
 
     public void HalfMatch(Team battingTeam, Team bowlingTeam){
+        System.out.println("================================================");
+        System.out.println("SCORECARD FOR " + battingTeam.getName().toUpperCase());
         List<List<String>> overs = battingTeam.getBattingOverDetails();
         for(int i=0;i<overs.size();i++){
+            System.out.println("================================================");
             System.out.println(battingTeam.getName()+" is batting for over number " + (i+1));
             bowlingTeam.nextBowler(i);
             playOver(battingTeam, bowlingTeam, overs.get(i));
@@ -56,6 +59,11 @@ public class Game {
             else if(over.get(i).equals("2")){
                 battingTeam.getOnStrike().setRuns(battingTeam.getOnStrike().getRuns()+2);
                 battingTeam.setScore(battingTeam.getScore()+2);
+            }
+            else if(over.get(i).equals("5")){
+                battingTeam.getOnStrike().setRuns(battingTeam.getOnStrike().getRuns()+5);
+                battingTeam.setScore(battingTeam.getScore()+5);
+                battingTeam.changeStrike();
             }
             bowlingTeam.getBowler().setBallsThrown(bowlingTeam.getBowler().getBallsThrown()+1);
         }
